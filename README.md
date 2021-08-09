@@ -89,7 +89,7 @@ Then you create any number of html files inside `src/html` that will be compiled
 
 Notice that the include tag allows you to pass data to variables to the included file. Variables are output with double curly braces
 
-the text.html include is here:
+the text.html include is here with the `{{ author }}` variable:
 
 ```html
 <p>
