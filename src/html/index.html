@@ -1,0 +1,31 @@
+<extends src="layout.html">
+    <!-- meta title-->
+    <block name="metatitle"><title>My Page Meta Title</title></block>
+
+
+  <!--page title-->
+  <block name="page-title">yo yo yo123</block>
+
+    <!-- body -->
+    <block name="maincontent">
+
+      <div class="container">
+        <h1>this is the h1 tag</h1>
+
+        <p class="text-3xl bg-blueBrand text-white">
+          this is a sentence
+        </p>
+
+        <div class="bg-green-200 p-8">
+
+          <!--inlcude test file-->
+          <include src="test.html" locals='{
+              "author": "John Doe"
+          }'></include>
+
+        </div>
+      </div><!-- /.container -->
+
+    </block>
+    <!-- end block -->
+</extends>
