@@ -1,8 +1,8 @@
-# Craft CMS Starter Project
+# NO CMS Starter Project
 
-This is an opinionated Craft CMS starter project using DDev for local development, Tailwind CSS, Alpine Js, and Laravel Mix.
+create static html files using includes and tailwind css. Modified from my [Craft CMS Starter](https://github.com/CreateSean/craft-starter).
 
-to install this package run `composer create-project createsean/craft-starter .`
+Clone this locally and and follow instructions below to get started
 
 ---
 
@@ -11,17 +11,9 @@ to install this package run `composer create-project createsean/craft-starter .`
 Set up your local development, if you are using DDev for local development then everything should just work for you. If you are **NOT** using DDEV for local development skip this part and set up local development however you normally do (Valet, Mamp, etc), be sure to import the seed database `db.sql.gz`
 
 1. open .ddev/config.yaml and update line 15 to use the port you want. Must be unique to all ddev sites on your local computer
-2. open .ddev/config.yaml and update php version (line 4) and mysql_version (line 11) if needed
-3. update dotenv variables, especially SITE_NAME, PRIMARY_SITE_URL, SITE_PATH, ASSET_BASE_URL and fill in the missing details
-4. Run `ddev start` and the site should start up.
-5. run `ddev import-db --src=db.sql.gz` this will import the seeder database with settings, channels, etc.
-6. run `ddev launch access` will open the Craft CP
-7. To access the db from your host machine run `ddev describe` and you'll get the connection details needed
-
-Login: `cc_admin`
-Password: `letmein`
-
-8. after logging in be sure to **update your password**
+2. update dotenv variables, especially SITE_NAME, PRIMARY_SITE_URL, SITE_PATH, ASSET_BASE_URL and fill in the missing details
+3. Run `ddev start` and the site should start up.
+4. run `ddev launch`
 
 ## To Do
 
