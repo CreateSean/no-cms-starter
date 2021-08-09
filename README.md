@@ -24,7 +24,7 @@ Set up your local development, if you are using DDev for local development then 
 
 the HTML includes work similarly to how twig does layouts and includes. First create a layout file with blocks that you want to pass content into from regular pages like this
 
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,7 +54,7 @@ the HTML includes work similarly to how twig does layouts and includes. First cr
 
 Then you create any number of html files inside `src/html` that will be compiled into the public directory. PLace your content inside the blocks and use includes as needed.
 
-```
+```html
 <extends src="layout.html">
     <!-- meta title-->
     <block name="metatitle"><title>My Page Meta Title</title></block>
@@ -91,7 +91,7 @@ Notice that the include tag allows you to pass data to variables to the included
 
 the text.html include is here:
 
-```
+```html
 <p>
     this is a partial with the <span class="font-bold">authors</span> name passed as a variable <br>
     I am a wonderful and useless text, written by <span class="font-bold">{{ author }}</span>!
