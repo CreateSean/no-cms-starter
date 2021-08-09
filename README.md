@@ -19,6 +19,86 @@ Set up your local development, if you are using DDev for local development then 
 
 * add more default templating i.e. main-nav with mobile hamburger
 
+
+## HTML includes
+
+the HTML includes work similarly to how twig does layouts and includes. First create a layout file with blocks that you want to pass content into from regular pages like this
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/css/app.css">
+
+  <!--
+    title tag needs to be included inside block
+    other includes can be wrapped by tags just not this one
+    https://github.com/posthtml/posthtml-parser/issues/53
+  -->
+  <block name="metatitle"><title>foo</title></block>
+
+</head>
+<body>
+
+  <h1><block name="page-title"></block></h1>
+
+  <block name="maincontent"></block>
+
+</body>
+
+</html>
+```
+
+Then you create any number of html files inside `src/html` that will be compiled into the public directory. PLace your content inside the blocks and use includes as needed.
+
+```
+<extends src="layout.html">
+    <!-- meta title-->
+    <block name="metatitle"><title>My Page Meta Title</title></block>
+
+  <!--page title-->
+  <block name="page-title">yo yo yo123</block>
+
+    <!-- body -->
+    <block name="maincontent">
+
+      <div class="container">
+        <h1>this is the h1 tag</h1>
+
+        <p class="text-3xl bg-blueBrand text-white">
+          this is a sentence
+        </p>
+
+        <div class="bg-green-200 p-8">
+
+          <!--inlcude test file-->
+          <include src="test.html" locals='{
+              "author": "John Doe"
+          }'></include>
+
+        </div>
+      </div><!-- /.container -->
+
+    </block>
+    <!-- end block -->
+</extends>
+```
+
+Notice that the include tag allows you to pass data to variables to the included file. Variables are output with double curly braces
+
+the text.html include is here:
+
+```
+<p>
+    this is a partial with the <span class="font-bold">authors</span> name passed as a variable <br>
+    I am a wonderful and useless text, written by <span class="font-bold">{{ author }}</span>!
+</p>
+```
+
+
 ## Build Process
 
 Tailwind is compiled using [Tailwind-jit](https://github.com/tailwindlabs/tailwindcss-jit) which is much faster than previously. it also ensures a small file size during `watch` builds. However I still recommend running the [production](#production) task before deployment.
